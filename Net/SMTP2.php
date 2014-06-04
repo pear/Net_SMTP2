@@ -18,7 +18,6 @@
 // |          Damian Alejandro Fernandez Sosa <damlists@cnba.uba.ar>      |
 // +----------------------------------------------------------------------+
 
-require_once 'PEAR.php';
 require_once 'PEAR/Exception.php';
 require_once 'Net/Socket.php';
 
