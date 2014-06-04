@@ -17,14 +17,14 @@
   <active>yes</active>
  </lead>
  <date>2014-06-04</date>
- <time>14:48:39</time>
+ <time>15:34:30</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
-  <release>stable</release>
-  <api>stable</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://www.php.net/license/3_01.txt">PHP License</license>
  <notes>
@@ -39,12 +39,11 @@ Fork from Net_SMTP
    <file baseinstalldir="/" md5sum="31e7aa38a1a996e46ef565d234442a9d" name="docs/docutils.css" role="doc" />
    <file baseinstalldir="/" md5sum="395e1c6d2bab838406f36374a7076c0d" name="docs/guide.txt" role="doc" />
    <file baseinstalldir="/" md5sum="12595dc21876d86f03550eb81eac59f6" name="examples/basic.php" role="doc" />
-   <file baseinstalldir="/" md5sum="215481165a157d9bdbe040e7775bcca5" name="Net/SMTP2.php" role="php" />
+   <file baseinstalldir="/" md5sum="d233dac2fb1a2e2cc5e274d6f1c51bac" name="Net/SMTP2.php" role="php" />
    <file baseinstalldir="/" md5sum="12ff656488aacc6aa98186bdf95181aa" name="tests/auth.phpt" role="test" />
    <file baseinstalldir="/" md5sum="1cc9e0a4ad15b23b7913b33f1fa5e73d" name="tests/basic.phpt" role="test" />
    <file baseinstalldir="/" md5sum="8517c458ae5094ee3c31a545d51c69c8" name="tests/config.php.dist" role="test" />
    <file baseinstalldir="/" md5sum="4cc89b915b985cdbd4f0de365d96fbdf" name="tests/quotedata.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="35cbbda951af56de1d9fbd7da44f240f" name="composer.json" role="data" />
    <file baseinstalldir="/" md5sum="6527a0a54512e29324a4f80a37260471" name="phpdoc.sh" role="data" />
    <file baseinstalldir="/" md5sum="395e1c6d2bab838406f36374a7076c0d" name="README.rst" role="data" />
   </dir>
@@ -77,8 +76,8 @@ Fork from Net_SMTP
     <api>0.1.0</api>
    </version>
    <stability>
-    <release>stable</release>
-    <api>stable</api>
+    <release>beta</release>
+    <api>beta</api>
    </stability>
    <date>2014-06-04</date>
    <license uri="http://www.php.net/license/3_01.txt">PHP License</license>
