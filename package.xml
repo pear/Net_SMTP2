@@ -5,6 +5,12 @@
  <summary>An implementation of the SMTP protocol</summary>
  <description>Provides an implementation of the SMTP protocol using PEAR&apos;s Net_Socket2 class.</description>
  <lead>
+  <name>Daniel O'Connor</name>
+  <user>doconnor</user>
+  <email>daniel.oconnor@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
   <name>Jon Parise</name>
   <user>jon</user>
   <email>jon@php.net</email>
