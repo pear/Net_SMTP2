@@ -250,7 +250,7 @@ class Net_SMTP2
         $result = $this->_socket->write($data);
         if (!$result) {
             throw new PEAR_Exception('Failed to write to socket: unknown error');
-        } elseif (PEAR::isError($result)) {
+        } elseif (is_a($result, "PEAR_Error")) {
             throw new PEAR_Exception('Failed to write to socket: ' . $result->getMessage(),
                                      $result);
         }
@@ -407,7 +407,7 @@ class Net_SMTP2
         $result = $this->_socket->connect($this->host, $this->port,
                                           $persistent, $timeout,
                                           $this->_socket_options);
-        if (PEAR::isError($result)) {
+        if (is_a($result, "PEAR_Error")) {
             throw new PEAR_Exception('Failed to connect socket: ' . $result->getMessage(),
                                      $result);
         }
@@ -442,8 +442,8 @@ class Net_SMTP2
         $this->_put('QUIT');
         
         $this->_parseResponse(221);
-        
-        if (PEAR::isError($error = $this->_socket->disconnect())) {
+        $error = $this->_socket->disconnect());
+        if (is_a($error, "PEAR_Error")) {
             throw new PEAR_Exception('Failed to disconnect socket: ' .
                                      $error->getMessage());
         }
@@ -534,7 +534,8 @@ class Net_SMTP2
             $this->_put('STARTTLS');
             $this->_parseResponse(220);
 
-            if (PEAR::isError($result = $this->_socket->enableCrypto(true, STREAM_CRYPTO_METHOD_TLS_CLIENT))) {
+            $result = $this->_socket->enableCrypto(true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+            if (is_a($result, "PEAR_Error")) {
                 throw new PEAR_Exception($result->getMessage(), $result);
             } elseif ($result !== true) {
                 throw new PEAR_Exception('STARTTLS failed');
