@@ -632,8 +632,9 @@ class Net_SMTP2
             throw $e;
         }
 
+        $auth_sasl = new Auth_SASL2();
         $challenge = base64_decode($this->_arguments[0]);
-        $digest = Auth_SASL2::factory('digest-md5');
+        $digest = $auth_sasl->factory('digest-md5');
         $auth_str = base64_encode($digest->getResponse($uid, $pwd, $challenge,
                                                        $this->host, "smtp",
                                                        $authz));
@@ -675,9 +676,9 @@ class Net_SMTP2
             }
             throw $e;
         }
-
+        $auth_sasl = new Auth_SASL2();
         $challenge = base64_decode($this->_arguments[0]);
-        $cram = Auth_SASL2::factory('cram-md5');
+        $cram = $auth_sasl->factory('cram-md5');
         $auth_str = base64_encode($cram->getResponse($uid, $pwd, $challenge));
 
         $this->_put($auth_str);
