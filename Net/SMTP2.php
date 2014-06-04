@@ -184,9 +184,9 @@ class Net_SMTP2
         $this->_socket_options = $socket_options;
         $this->_timeout = $timeout;
 
-        /* Include the Auth_SASL package.  If the package is available, we
+        /* Include the Auth_SASL2 package.  If the package is available, we
          * enable the authentication methods that depend upon it. */
-        if (@include_once 'Auth/SASL.php') {
+        if (@include_once 'Auth/SASL2.php') {
             $this->setAuthMethod('CRAM-MD5', array($this, '_authCram_MD5'));
             $this->setAuthMethod('DIGEST-MD5', array($this, '_authDigest_MD5'));
         }
@@ -633,7 +633,7 @@ class Net_SMTP2
         }
 
         $challenge = base64_decode($this->_arguments[0]);
-        $digest = Auth_SASL::factory('digest-md5');
+        $digest = Auth_SASL2::factory('digest-md5');
         $auth_str = base64_encode($digest->getResponse($uid, $pwd, $challenge,
                                                        $this->host, "smtp",
                                                        $authz));
@@ -677,7 +677,7 @@ class Net_SMTP2
         }
 
         $challenge = base64_decode($this->_arguments[0]);
-        $cram = Auth_SASL::factory('cram-md5');
+        $cram = Auth_SASL2::factory('cram-md5');
         $auth_str = base64_encode($cram->getResponse($uid, $pwd, $challenge));
 
         $this->_put($auth_str);

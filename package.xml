@@ -65,9 +65,8 @@ Fork from Net_SMTP
   </required>
   <optional>
    <package>
-    <name>Auth_SASL</name>
+    <name>Auth_SASL2</name>
     <channel>pear.php.net</channel>
-    <min>1.0.5</min>
    </package>
   </optional>
  </dependencies>
