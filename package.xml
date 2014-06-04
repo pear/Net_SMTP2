@@ -3,7 +3,7 @@
  <name>Net_SMTP2</name>
  <channel>pear.php.net</channel>
  <summary>An implementation of the SMTP protocol</summary>
- <description>Provides an implementation of the SMTP protocol using PEAR&apos;s Net_Socket class.</description>
+ <description>Provides an implementation of the SMTP protocol using PEAR&apos;s Net_Socket2 class.</description>
  <lead>
   <name>Jon Parise</name>
   <user>jon</user>
@@ -58,9 +58,8 @@ Fork from Net_SMTP
     <min>1.4.3</min>
    </pearinstaller>
    <package>
-    <name>Net_Socket</name>
+    <name>Net_Socket2</name>
     <channel>pear.php.net</channel>
-    <min>1.0.7</min>
    </package>
   </required>
   <optional>

@@ -19,11 +19,11 @@
 // +----------------------------------------------------------------------+
 
 require_once 'PEAR/Exception.php';
-require_once 'Net/Socket.php';
+require_once 'Net/Socket2.php';
 
 /**
  * Provides an implementation of the SMTP protocol using PEAR's
- * Net_Socket:: class.
+ * Net_Socket2:: class.
  *
  * @package Net_SMTP2
  * @author  Chuck Hagenbuch <chuck@horde.org>
@@ -103,7 +103,7 @@ class Net_SMTP2
     protected $_socket = null;
 
     /**
-     * Array of socket options that will be passed to Net_Socket::connect().
+     * Array of socket options that will be passed to Net_Socket2::connect().
      *
      * @see stream_context_create()
      *
@@ -179,7 +179,7 @@ class Net_SMTP2
         }
         $this->pipelining = $pipelining;
 
-        $this->_socket = new Net_Socket();
+        $this->_socket = new Net_Socket2();
         $this->_socket_options = $socket_options;
         $this->_timeout = $timeout;
 
@@ -249,9 +249,6 @@ class Net_SMTP2
         $result = $this->_socket->write($data);
         if (!$result) {
             throw new PEAR_Exception('Failed to write to socket: unknown error');
-        } elseif (is_a($result, "PEAR_Error")) {
-            throw new PEAR_Exception('Failed to write to socket: ' . $result->getMessage(),
-                                     $result);
         }
 
         return $result;
@@ -406,10 +403,6 @@ class Net_SMTP2
         $result = $this->_socket->connect($this->host, $this->port,
                                           $persistent, $timeout,
                                           $this->_socket_options);
-        if (is_a($result, "PEAR_Error")) {
-            throw new PEAR_Exception('Failed to connect socket: ' . $result->getMessage(),
-                                     $result);
-        }
 
         /*
          * Now that we're connected, reset the socket's timeout value for 
@@ -441,11 +434,7 @@ class Net_SMTP2
         $this->_put('QUIT');
         
         $this->_parseResponse(221);
-        $error = $this->_socket->disconnect();
-        if (is_a($error, "PEAR_Error")) {
-            throw new PEAR_Exception('Failed to disconnect socket: ' .
-                                     $error->getMessage());
-        }
+        $this->_socket->disconnect();
 
         return true;
     }
@@ -534,9 +523,7 @@ class Net_SMTP2
             $this->_parseResponse(220);
 
             $result = $this->_socket->enableCrypto(true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-            if (is_a($result, "PEAR_Error")) {
-                throw new PEAR_Exception($result->getMessage(), $result);
-            } elseif ($result !== true) {
+            if ($result !== true) {
                 throw new PEAR_Exception('STARTTLS failed');
             }
 
