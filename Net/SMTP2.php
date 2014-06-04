@@ -441,7 +441,7 @@ class Net_SMTP2
         $this->_put('QUIT');
         
         $this->_parseResponse(221);
-        $error = $this->_socket->disconnect());
+        $error = $this->_socket->disconnect();
         if (is_a($error, "PEAR_Error")) {
             throw new PEAR_Exception('Failed to disconnect socket: ' .
                                      $error->getMessage());
