@@ -27,11 +27,11 @@
         "./"
     ],
     "license": "PHP License",
-    "name": "pear/net_smtp",
-    "homepage": "http://pear.github.io/Net_SMTP/",
+    "name": "pear/net_smtp2",
+    "homepage": "http://pear.github.io/Net_SMTP2/",
     "support": {
-        "issues": "https://github.com/pear/Net_SMTP/issues",
-        "source": "https://github.com/pear/Net_SMTP"
+        "issues": "https://github.com/pear/Net_SMTP2/issues",
+        "source": "https://github.com/pear/Net_SMTP2"
     },
     "type": "library",
     "require": {

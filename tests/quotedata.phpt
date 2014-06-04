@@ -1,9 +1,9 @@
 --TEST--
-Net_SMTP: quotedata()
+Net_SMTP2: quotedata()
 --FILE--
 <?php
 
-require_once 'Net/SMTP.php';
+require_once 'Net/SMTP2.php';
 
 $tests = array(
     /* Newlines */
@@ -51,7 +51,7 @@ function literal($x)
 }
 
 $error = false;
-$smtp = new Net_SMTP();
+$smtp = new Net_SMTP2();
 
 foreach ($tests as $input => $expected) {
     $output = $input;

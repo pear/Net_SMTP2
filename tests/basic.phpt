@@ -1,11 +1,11 @@
 --TEST--
-Net_SMTP: Basic Functionality
+Net_SMTP2: Basic Functionality
 --SKIPIF--
 <?php if (!@include('config.php')) die("skip\n");
 --FILE--
 <?php
 
-require_once 'Net/SMTP.php';
+require_once 'Net/SMTP2.php';
 require_once 'config.php';
 
 if (! ($smtp = new Net_SMTP(TEST_HOSTNAME, TEST_PORT, TEST_LOCALHOST))) {

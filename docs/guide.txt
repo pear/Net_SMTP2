@@ -1,5 +1,5 @@
 ======================
- The Net_SMTP Package
+ The Net_SMTP2 Package
 ======================
 
 --------------------
@@ -18,7 +18,7 @@ Dependencies
 The ``PEAR_Exception`` Class
 ------------------------
 
-The Net_SMTP package uses the `PEAR_Exception`_ object for all of its `error
+The Net_SMTP2 package uses the `PEAR_Exception`_ object for all of its `error
 handling`_.
 
 The ``Net_Socket`` Package
@@ -30,14 +30,14 @@ The ``Auth_SASL`` Package
 -------------------------
 
 The `Auth_SASL`_ package is an optional dependency.  If it is available, the
-Net_SMTP package will be able to support the DIGEST-MD5_ and CRAM-MD5_ SMTP
+Net_SMTP2 package will be able to support the DIGEST-MD5_ and CRAM-MD5_ SMTP
 authentication methods.  Otherwise, only the LOGIN_ and PLAIN_ methods will
 be available.
 
 Error Handling
 ==============
 
-All of the Net_SMTP class's public methods throw a PEAR_Exception_ object if an
+All of the Net_SMTP2 class's public methods throw a PEAR_Exception_ object if an
 error occurs.  The standard way to check for a PEAR_Error object is by using
 try/catch blocks::
 
@@ -50,8 +50,8 @@ try/catch blocks::
 SMTP Authentication
 ===================
 
-The Net_SMTP package supports the SMTP authentication standard (as defined
-by RFC-2554_).  The Net_SMTP package supports the following authentication
+The Net_SMTP2 package supports the SMTP authentication standard (as defined
+by RFC-2554_).  The Net_SMTP2 package supports the following authentication
 methods, in order of preference:
 
 .. _RFC-2554: http://www.ietf.org/rfc/rfc2554.txt
@@ -100,7 +100,7 @@ Secure Connections
 If `secure socket transports`_ have been enabled in PHP, it is possible to
 establish a secure connection to the remote SMTP server::
 
-    $smtp = new Net_SMTP('ssl://mail.example.com', 465);
+    $smtp = new Net_SMTP2('ssl://mail.example.com', 465);
 
 This example connects to ``mail.example.com`` on port 465 (a common SMTPS
 port) using the ``ssl://`` transport.
@@ -142,18 +142,18 @@ an end to the message data, single leading periods in the original data
 string are "doubled" (e.g. "``..``").
 
 These string transformation can be expensive when large blocks of data are
-involved.  For example, the Net_SMTP package is not aware of MIME parts (it
+involved.  For example, the Net_SMTP2 package is not aware of MIME parts (it
 just sees the MIME message as one big string of characters), so it is not
 able to skip non-text attachments when searching for characters that may
 need to be quoted.
 
-Because of this, it is possible to extend the Net_SMTP class in order to
+Because of this, it is possible to extend the Net_SMTP2 class in order to
 implement your own custom quoting routine.  Just create a new class based on
-the Net_SMTP class and reimplement the ``quotedata()`` method::
+the Net_SMTP2 class and reimplement the ``quotedata()`` method::
 
-    require 'Net_SMTP.php';
+    require 'Net/SMTP2.php';
 
-    class Net_SMTP_custom extends Net_SMTP
+    class Net_SMTP2_custom extends Net_SMTP2
     {
         function quotedata($data)
         {
@@ -171,7 +171,7 @@ from the ``quotedata()`` method.
 Server Responses
 ================
 
-The Net_SMTP package retains the server's last response for further
+The Net_SMTP2 package retains the server's last response for further
 inspection.  The ``getResponse()`` method returns a 2-tuple (two element
 array) containing the server's response code as an integer and the response's
 arguments as a string.
@@ -182,7 +182,7 @@ the ``getGreeting()`` method.
 Debugging
 =========
 
-The Net_SMTP package contains built-in debugging output routines (disabled by
+The Net_SMTP2 package contains built-in debugging output routines (disabled by
 default).  Debugging output must be explicitly enabled via the ``setDebug()``
 method::
 
@@ -209,9 +209,9 @@ Basic Use
 ---------
 
 The following script demonstrates how a simple email message can be sent
-using the Net_SMTP package::
+using the Net_SMTP2 package::
 
-    require 'Net/SMTP.php';
+    require 'Net/SMTP2.php';
 
     $host = 'mail.example.com';
     $from = 'user@example.com';
@@ -219,9 +219,9 @@ using the Net_SMTP package::
     $subj = "Subject: Test Message\n";
     $body = "Body Line 1\nBody Line 2";
 
-    /* Create a new Net_SMTP object. */
-    if (! ($smtp = new Net_SMTP($host))) {
-        die("Unable to instantiate Net_SMTP object\n");
+    /* Create a new Net_SMTP2 object. */
+    if (! ($smtp = new Net_SMTP2($host))) {
+        die("Unable to instantiate Net_SMTP2 object\n");
     }
 
     /* Connect to the SMTP server. */

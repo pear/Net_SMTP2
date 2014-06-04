@@ -26,14 +26,14 @@ require_once 'Net/Socket.php';
  * Provides an implementation of the SMTP protocol using PEAR's
  * Net_Socket:: class.
  *
- * @package Net_SMTP
+ * @package Net_SMTP2
  * @author  Chuck Hagenbuch <chuck@horde.org>
  * @author  Jon Parise <jon@php.net>
  * @author  Damian Alejandro Fernandez Sosa <damlists@cnba.uba.ar>
  *
- * @example basic.php   A basic implementation of the Net_SMTP package.
+ * @example basic.php   A basic implementation of the Net_SMTP2 package.
  */
-class Net_SMTP
+class Net_SMTP2
 {
     /**
      * The server to connect to.
@@ -148,14 +148,14 @@ class Net_SMTP
     protected $_esmtp = array();
 
     /**
-     * Instantiates a new Net_SMTP object, overriding any defaults
+     * Instantiates a new Net_SMTP2 object, overriding any defaults
      * with parameters that are passed in.
      *
      * If you have SSL support in PHP, you can connect to a server
      * over SSL using an 'ssl://' prefix:
      *
      *   // 465 is a common smtps port.
-     *   $smtp = new Net_SMTP('ssl://mail.host.com', 465);
+     *   $smtp = new Net_SMTP2('ssl://mail.host.com', 465);
      *   $smtp->connect();
      *
      * @param string  $host       The server to connect to.

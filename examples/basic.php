@@ -1,6 +1,6 @@
 <?php
 
-require 'Net/SMTP.php';
+require 'Net/SMTP2.php';
 
 $host = 'mail.example.com';
 $from = 'user@example.com';
@@ -8,9 +8,9 @@ $rcpt = array('recipient1@example.com', 'recipient2@example.com');
 $subj = "Subject: Test Message\n";
 $body = "Body Line 1\nBody Line 2";
 
-/* Create a new Net_SMTP object. */
-if (! ($smtp = new Net_SMTP($host))) {
-    die("Unable to instantiate Net_SMTP object\n");
+/* Create a new Net_SMTP2 object. */
+if (! ($smtp = new Net_SMTP2($host))) {
+    die("Unable to instantiate Net_SMTP2 object\n");
 }
 
 /* Connect to the SMTP server. */
