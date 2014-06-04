@@ -431,10 +431,14 @@ class Net_SMTP2
      */
     public function disconnect()
     {
-        $this->_put('QUIT');
+        try {
+            $this->_put('QUIT');
         
-        $this->_parseResponse(221);
-        $this->_socket->disconnect();
+            $this->_parseResponse(221);
+            $this->_socket->disconnect();
+        } catch (Net_Socket2_Exception $e) {
+            // Already disconnected? Silence!
+        }
 
         return true;
     }
